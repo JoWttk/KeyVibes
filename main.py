@@ -41,7 +41,6 @@ VOLUMES = load_config()
 for key, sound in SOUNDS.items():
     sound.set_volume(VOLUMES[key])
 
-# Controla o estado de cada tecla (pressionada ou não)
 key_state = {}
 
 def play(sound_key):
@@ -52,7 +51,7 @@ def play(sound_key):
 
 def on_press(key):
     try:
-        if hasattr(key, 'char'):  # Verifica se a tecla pressionada é uma tecla de caractere
+        if hasattr(key, 'char'): 
             if key.char not in key_state or not key_state[key.char]:
                 key_state[key.char] = True
                 play("key")
@@ -69,7 +68,7 @@ def on_press(key):
 
 def on_release(key):
     try:
-        if hasattr(key, 'char'):  # Verifica se a tecla liberada é uma tecla de caractere
+        if hasattr(key, 'char'): 
             if key.char in key_state:
                 key_state[key.char] = False
         elif key == keyboard.Key.space:
